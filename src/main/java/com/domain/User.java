@@ -30,4 +30,6 @@ public class User {
     private String update_date;
 
     private int status;
+
+    private String last_login_time;
 }
