@@ -10,13 +10,17 @@
     </select>
 
     <insert id="addUser" parameterType="com.domain.User">
-        insert into user (username,address) values (#{username},#{address});
+        insert into account(user_id,user_account,password,user_name,user_avatar,birthday,email,create_date,telephone,update_date,status,last_login_time)
+          values (#{user_id},#{user_account},#{password},#{user_name},#{user_avatar},#{birthday},#{email},#{create_date},#{telephone},#{update_date},#{status},#{last_login_time});
     </insert>
 
-    <update id="updateUserByAccount" parameterType="org.sang.mybatis.model.User">
-        update user set username=#{username},address=#{address} where id=#{id}
+    <update id="updateUserByAccount" parameterType="com.domain.User">
+          update account set
+          user_id=#{user_id},password=#{password},user_name=#{user_name},user_avatar=#{user_avatar},birthday=#{birthday},email=#{email},create_date=#{create_date},telephone=#{telephone},update_date=#{update_date},status=#{status},last_login_time=#{last_login_time}
+          where user_account = #{user_account};
     </update>
-    <delete id="deleteUserByAccount">
-        delete from user where id=#{id}
+
+    <delete id="deleteUserByAccount" >
+        delete from account where user_account = #{user_account};
     </delete>
 </mapper>
