@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射接口所在包路径-->
+<mapper namespace="com.dao.ArticleDao">
+    <insert id="addArticle" parameterType="com.domain.Article">
+        insert into article(article_id, owner, ariticle_title, content, likes_num, scan_num, reply_id)
+        values (#{articleId}, #{owner}, #{ariticleTitle}, #{content}, #{likesNum}, #{scanNum}, #{replyId});
+    </insert>
+    <select id="getArticles" resultType="com.domain.Article">
+        select *
+        from article;
+    </select>
+
+    <select id="getArticlesByOwner" resultType="com.domain.Article">
+        select *
+        from article
+        where owner = #{owner};
+    </select>
+
+    <select id="queryArticles" resultType="com.domain.Article">
+        select *
+        from article
+        where ariticle_title like #{title}
+           or owner like #{owner};
+    </select>
+
+    <delete id="deleteArticleById">
+        delete
+        from article
+        where article_id = #{id};
+    </delete>
+
+    <update id="upDateArticleById">
+        update article
+        set ariticle_title=#{ariticleTitle},
+            content=#{content},
+            likes_num=#{likesNum},
+            scan_num=#{scanNum},
+            reply_id=#{replyId}
+        where article_id = #{articleId}
+    </update>
+</mapper>

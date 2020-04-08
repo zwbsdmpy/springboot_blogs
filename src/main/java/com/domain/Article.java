@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class Article {
-    private long articleId;
-    private long owner;
+    private int articleId;
+    private int owner;
     private String ariticleTitle;
-    private String conten;
-    private long likesNum;
-    private long scanNum;
-    private long replyId;
+    private String content;
+    private int likesNum;
+    private int scanNum;
+    private int replyId;
 }
