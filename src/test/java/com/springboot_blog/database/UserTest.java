@@ -21,10 +21,10 @@ public class UserTest {
     @Test
     public void addUserTest() {
         User user = new User();
-        user.setUser_id(10000);
-        user.setUser_account("zwbsdmpy");
+        user.setUserAccount ("zwbsdmpy");
         user.setPassword("123456");
-        userDao.addUser(user);
+        user.setUserName ("我是真的帅");
+        System.out.println (userDao.addUser(user));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class UserTest {
 
     @Test
     public void getUserByAccount() {
-        User user = userDao.getUserMessageByAccount("zwbsdmpy");
+        User user = userDao.getUserById (1);
         System.out.println(user);
     }
 
@@ -50,11 +50,6 @@ public class UserTest {
 
     @Test
     public void updateUser() {
-        User user = new User();
-        user.setUser_id(10001);
-        user.setUser_account("zwbsdmpy");
-        user.setPassword("654321");
-        boolean result = userDao.updateUserByAccount(user);
-        System.out.println(result);
+
     }
 }

@@ -9,11 +9,13 @@ import java.util.List;
 public interface UserDao {
     public boolean addUser(User user);
 
-    public boolean updateUserByAccount(User user);
+    public boolean updateUserByAccount(String user);
 
-    public boolean deleteUserByAccount(String user_account);
+    public boolean deleteUserByAccount(String userAccount);
 
-    public User getUserMessageByAccount(String user_account);
+    public User getUserById(int userId);
+
+    public User getUserByName(String userName);
 
     public List<User> getUserList();
 

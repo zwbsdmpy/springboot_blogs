@@ -2,34 +2,28 @@ package com.domain;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
-/**
- * 账号实体类
- */
 @Data
 public class User {
-    private int user_id;
-
-    private String user_account;
-
+    private long userId;// 用户ID
+    private String userAccount;// 账号
     private String password;
+    private String userEmail;
+    private String userName;// 用户昵称
+    private String userImage;// 头像
+    private java.sql.Date createTime;// 创建日期
+    private java.sql.Date updateTime;//最后一次更新日期
+    private java.sql.Date lastLoginTime;// 最后一次登录日期
+    private long status;// 状态
+    private java.sql.Date birthday;// 生日
+    private String telephone;// 电话
+    private long roleId;// 身份
 
-    private String user_name;
-
-    private String user_avatar;
-
-    private Date birthday;
-
-    private String email;
-
-    private String create_date;
-
-    private String telephone;
-
-    private String update_date;
-
-    private int status;
-
-    private String last_login_time;
+    public User () {
+        this.createTime = new Date (System.currentTimeMillis ());
+        this.updateTime = createTime;
+        this.status = 0;
+    }
 }

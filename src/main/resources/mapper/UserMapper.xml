@@ -1,26 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射接口所在包路径-->
 <mapper namespace="com.dao.UserDao">
-    <select id="getUserMessageByAccount" resultType="com.domain.User">
-       select * from account where user_account = #{user_account}
+    <select id="getUserById" resultType="com.domain.User">
+        select *
+        from user
+        where user_id = #{user}
+    </select>
+
+    <select id="getUserByName" resultType="com.domain.User">
+        select *
+        from user
+        where user_name = #{userName}
     </select>
 
     <select id="getUserList" resultType="com.domain.User">
-       select * from account
+        select *
+        from user
     </select>
 
     <insert id="addUser" parameterType="com.domain.User">
-        insert into account(user_id,user_account,password,user_name,user_avatar,birthday,email,create_date,telephone,update_date,status,last_login_time)
-          values (#{user_id},#{user_account},#{password},#{user_name},#{user_avatar},#{birthday},#{email},#{create_date},#{telephone},#{update_date},#{status},#{last_login_time});
+        insert into user(user_id, user_account, password, user_email, user_name, user_image, create_time, update_time,
+                         last_login_time, status, birthday, telephone, role_id)
+        values (#{userId}, #{userAccount}, #{password}, #{userEmail}, #{userName}, #{userImage}, #{createTime},
+                #{updateTime}, #{lastLoginTime}, #{status}, #{birthday}, #{telephone}, #{roleId});
     </insert>
 
     <update id="updateUserByAccount" parameterType="com.domain.User">
-          update account set
-          user_id=#{user_id},password=#{password},user_name=#{user_name},user_avatar=#{user_avatar},birthday=#{birthday},email=#{email},create_date=#{create_date},telephone=#{telephone},update_date=#{update_date},status=#{status},last_login_time=#{last_login_time}
-          where user_account = #{user_account};
+        update user
+        set password=#{password},
+            user_name=#{userName},
+            user_image=#{userImage},
+            birthday=#{birthday},
+            user_email=#{userEmail},
+            telephone=#{telephone},
+            update_time=#{update_date},
+            status=#{status},
+            last_login_time=#{lastLoginTime}
+        where user_id = #{user_account};
     </update>
 
-    <delete id="deleteUserByAccount" >
-        delete from account where user_account = #{user_account};
+    <delete id="deleteUserByAccount">
+        delete
+        from user
+        where user_account = #{userAccount};
     </delete>
 </mapper>
