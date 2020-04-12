@@ -4,9 +4,8 @@ import lombok.Data;
 
 @Data
 public class Replay {
-
-    private long replayId;
-    private long articleId;
+    private int replayId;
+    private int articleId;
     private String content;
-    private long owner;
+    private int owner;
 }
