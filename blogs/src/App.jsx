@@ -1,13 +1,14 @@
 import React from 'react';
-import { render } from 'react-dom'
-import { Router, Route, Link } from 'react-router'
-import Header from "../../src/main/resources/templates/my-app/src/component/index/header/header";
-function App() {
-  return (
-    <div className="App">
-          <Header />
-    </div>
-  );
-}
+import {Provider} from "react-redux";
+import {store} from "./store/store";
+import AppRouter from "./AppRouter";
 
-export default App;
+export default class App extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <AppRouter/>
+            </Provider>
+        )
+    }
+}
