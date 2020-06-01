@@ -1,5 +1,6 @@
 import * as actionType from '../action/actionType'
 import {combineReducers} from "redux";
+import * as actions from "../action/actions";
 
 /**
  * 处理action
@@ -12,7 +13,9 @@ import {combineReducers} from "redux";
 const mainView = (state = [], action) => {
     switch (action.type) {
         case actionType.LOGIN:
-            return Object.assign({}, state, action);
+            return state;
+        case actionType.SIDER_MENU_LIST:
+            return actions.getSiderMenuList(action);
         default:
             return state;
     }

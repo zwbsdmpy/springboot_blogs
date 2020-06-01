@@ -1,10 +1,17 @@
 import {connect} from "react-redux";
 import MainPageView from "../component/MainPageView";
+import * as actionType from "../redux/action/actionType";
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
+    return (
+        state: state
+    )
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
 }
 
-export default connect(mapDispatchToProps(), mapStateToProps())(MainPageView)
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageView)

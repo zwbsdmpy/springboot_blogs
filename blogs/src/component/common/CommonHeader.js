@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {Layout, Menu, Breadcrumb} from 'antd';
+import {Menu} from 'antd';
 import MailOutlined from "@ant-design/icons/lib/icons/MailOutlined";
 import AppstoreOutlined from "@ant-design/icons/lib/icons/AppstoreOutlined";
 import SettingOutlined from "@ant-design/icons/lib/icons/SettingOutlined";
+import {connect} from "react-redux";
 
 const {SubMenu} = Menu;
-const {Header, Content, Sider} = Layout;
 
 export class CommonHeader extends Component {
     state = {
@@ -47,4 +47,3 @@ export class CommonHeader extends Component {
         )
     }
 }
-
