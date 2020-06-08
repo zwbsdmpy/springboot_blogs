@@ -1,12 +1,12 @@
 import {Layout, Menu} from "antd";
-import {DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
 import React, {Component} from "react";
-import {connect} from "react-redux";
-import {getSiderMenuList} from "../../redux/action/actions";
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
+/**
+ * TODO: 数据库中存储每个用户的列表信息以及图标
+ */
 export class CommonSider extends Component {
     constructor(props) {
         super(props);
@@ -17,10 +17,6 @@ export class CommonSider extends Component {
     }
 
     componentDidMount() {
-        this.init();
-    }
-
-    componentWillReceiveProps(nextProps) {
     }
 
     init = () => {
@@ -84,46 +80,25 @@ export class CommonSider extends Component {
     }
 
     render() {
-        let menuList = '';
-        if (this.state.siderMenuList !== []) {
-            menuList = this.handleSiderMenuList(this.state.siderMenuList);
-        }
+        let siderData = this.props.siderData;
         return (
             <Sider collapsible="true" collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
                 <div className="logo"/>
-
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                    <Menu.Item key="1" icon={<PieChartOutlined/>}>
-                        Option 1
+                    <Menu.Item key="1">
+                        所有博客
                     </Menu.Item>
-                    <Menu.Item key="2" icon={<DesktopOutlined/>}>
-                        Option 2
-                    </Menu.Item>
-                    <SubMenu key="sub1" icon={<UserOutlined/>} title="User">
-                        <Menu.Item key="3">Tom</Menu.Item>
-                        <Menu.Item key="4">Bill</Menu.Item>
-                        <Menu.Item key="5">Alex</Menu.Item>
+                    <SubMenu key="sub1" title="分类">
+                        <Menu.Item key="2">Java</Menu.Item>
+                        <Menu.Item key="3">Spring</Menu.Item>
+                        <Menu.Item key="4">React</Menu.Item>
+                        <Menu.Item key="5">数据库</Menu.Item>
+                        <Menu.Item key="6">算法</Menu.Item>
+                        <Menu.Item key="7">计算机网络</Menu.Item>
                     </SubMenu>
-                    <SubMenu key="sub2" icon={<TeamOutlined/>} title="Team">
-                        <Menu.Item key="6">Team 1</Menu.Item>
-                        <Menu.Item key="8">Team 2</Menu.Item>
-                    </SubMenu>
-                    <Menu.Item key="9" icon={<FileOutlined/>}/>
+                    <Menu.Item key="8">个人信息</Menu.Item>
                 </Menu>
-                {menuList}
             </Sider>
         )
     }
 }
-
-const mapStateToProps = (state) => {
-
-}
-
-const mapDispatchToProps = (dispatch) => {
-
-}
-
-export default connect((state) => {
-     menuList: {state}
-})(CommonSider);

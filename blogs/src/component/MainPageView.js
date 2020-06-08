@@ -1,24 +1,23 @@
 import React, {Component} from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
-import {Breadcrumb, Layout} from 'antd';
-import {CommonFooter} from "./common/CommonFooter";
-import {CommonHeader} from "./common/CommonHeader";
-import CommonSider from "./common/CommonSider";
+import {Layout} from 'antd';
+import {CommonFooter} from "./common/CommonFooter.jsx";
+import {CommonHeader} from "./common/CommonHeader.jsx";
+import {CommonSider} from "./common/CommonSider.jsx";
+import {connect} from 'react-redux'
 
 const {Content} = Layout;
 
-export default class MainPageView extends Component {
+class MainPageView extends Component {
     render() {
+        const siderData = this.props.siderMenuList;
         return (
             <Layout style={{minHeight: '100vh'}}>
-                <CommonSider/>
+                <CommonSider siderData={siderData}/>
                 <Layout className="site-layout">
                     <CommonHeader/>
                     <Content style={{margin: '0 16px'}}>
-                        <div id='content' className="site-layout-background" style={{padding: 24, minHeight: 360}}>
-
-                        </div>
                     </Content>
                     <CommonFooter/>
                 </Layout>
@@ -26,3 +25,10 @@ export default class MainPageView extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        siderMenuList: state.mainView.siderMenuList
+    }
+}
+export default connect(mapStateToProps, null)(MainPageView);
