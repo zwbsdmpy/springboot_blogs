@@ -15,12 +15,4 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ArticleTest {
     @Autowired
     ArticleDao articleDao;
-
-    @Test
-    public void testAdd () {
-        Article article = new Article ();
-        article.setAriticleTitle ("zwbsdmpy");
-        article.setContent ("today is history，today we make history，today we are history");
-        System.out.println (articleDao.addArticle (article));
-    }
 }

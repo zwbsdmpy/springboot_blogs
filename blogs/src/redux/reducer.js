@@ -4,7 +4,7 @@ import * as actions from "./actionCreater";
 
 const initState = {
     siderMenuList: [
-        '所有博客',
+        {'所有博客': {}},
         {
             "分类": [
                 "Java",
@@ -17,7 +17,7 @@ const initState = {
                 "微服务",
             ]
         },
-        '个人信息',
+        {'个人信息': {}},
     ],
 }
 /**

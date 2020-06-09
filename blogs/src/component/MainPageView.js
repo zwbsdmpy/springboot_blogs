@@ -6,10 +6,15 @@ import {CommonFooter} from "./common/CommonFooter.jsx";
 import {CommonHeader} from "./common/CommonHeader.jsx";
 import {CommonSider} from "./common/CommonSider.jsx";
 import {connect} from 'react-redux'
+import * as action from "../redux/actionCreater";
 
 const {Content} = Layout;
 
 class MainPageView extends Component {
+    componentDidMount() {
+        this.props.getSiderMenuData();
+    }
+
     render() {
         const siderData = this.props.siderMenuList;
         return (
@@ -31,4 +36,13 @@ const mapStateToProps = (state) => {
         siderMenuList: state.mainView.siderMenuList
     }
 }
-export default connect(mapStateToProps, null)(MainPageView);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getSiderMenuData() {
+            dispatch(action.getSiderDataAction())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageView);

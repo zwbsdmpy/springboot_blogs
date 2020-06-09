@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射接口所在包路径-->
+<mapper namespace="com.dao.MenuDao">
+    <insert id="addMenu" parameterType="com.domain.Menu">
+        insert into menu(menu_id, menu_type, menu_data)
+        values (#{menuId}, #{menuType}, #{menuData});
+    </insert>
+    <select id="getMenus" resultType="com.domain.Menu">
+        select *
+        from menu;
+    </select>
+
+    <!--TODO:外键绑定user-->
+    <select id="getMenuByOwner" resultType="com.domain.Menu">
+        select *
+        from menu
+    </select>
+
+    <delete id="deleteMenuById">
+        delete
+        from menu
+        where menu_id = #{id};
+    </delete>
+
+    <update id="upDateMenuById">
+        update menu
+        set menu_type=#{menuType},
+            menu_data=#{menuData}
+        where menu_id = #{menu_id}
+    </update>
+</mapper>

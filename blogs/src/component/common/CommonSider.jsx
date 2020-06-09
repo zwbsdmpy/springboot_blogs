@@ -1,5 +1,6 @@
 import {Layout, Menu} from "antd";
 import React, {Component} from "react";
+import {connect} from 'react-redux'
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
@@ -12,31 +13,11 @@ export class CommonSider extends Component {
         super(props);
         this.state = {
             collapsed: false,
-            siderMenuList: [],
+            key: 0,
         };
     }
 
     componentDidMount() {
-    }
-
-    init = () => {
-        let menuList = [
-            '所有博客',
-            {
-                "分类": [
-                    "Java",
-                    "Spring",
-                    "React",
-                    "数据库",
-                    "算法",
-                    "计算机网络",
-                    "分布式",
-                    "微服务",
-                ]
-            },
-            '个人信息',
-        ];
-        this.setState({siderMenuList: menuList});
     }
 
     // 是否折叠左边扩展栏
@@ -47,8 +28,9 @@ export class CommonSider extends Component {
     // 构建左导航栏菜单
     handleSiderMenuList = (siderMenuList) => {
         let menuList = [];
+        let key = 0;
         siderMenuList.map((item) => {
-            let menuItem = '';
+            let menuItem = [];
             if (Array.isArray(item)) {
                 item.map((subMenu) => {
                     let subMenuKeys = Object.keys(subMenu);
@@ -56,11 +38,11 @@ export class CommonSider extends Component {
                         let subMenuItems = [];
                         subMenu[subMenuKey].map((subMenuItem) => {
                             subMenuItems.push(
-                                <Menu.Item key={subMenuItems.length}>{subMenuItem}</Menu.Item>
+                                <Menu.Item key={key++}>{subMenuItem}</Menu.Item>
                             );
                         })
                         let menuItem = (
-                            <SubMenu key={menuList.length} title={subMenuKey}>
+                            <SubMenu key={key++} title={subMenuKey}>
                                 {subMenuItems}
                             </SubMenu>)
                         menuList.push(menuItem);
@@ -69,7 +51,7 @@ export class CommonSider extends Component {
                 let subMenuName = item
             } else {
                 menuItem = (
-                    <Menu.Item key={menuList.length}>
+                    <Menu.Item key={key++}>
                         {item}
                     </Menu.Item>
                 )
@@ -77,6 +59,18 @@ export class CommonSider extends Component {
             }
         })
         return menuList;
+    }
+
+    handleSubMenu = (content, key) => {
+        return (
+            <Menu.Item key={key++}>
+                {content}
+            </Menu.Item>
+        )
+    }
+
+    handleMenuItem = () => {
+
     }
 
     render() {
@@ -102,3 +96,10 @@ export class CommonSider extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        siderMenuList: state.mainView.siderMenuList
+    }
+}
+
+export default connect(mapStateToProps)(CommonSider);
