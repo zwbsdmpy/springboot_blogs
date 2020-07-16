@@ -1,6 +1,10 @@
 package com.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.util.JsonUtil;
 import lombok.Data;
+import lombok.SneakyThrows;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -12,7 +16,7 @@ public class User {
     private String password;
     private String userEmail;
     private String userName;// 用户昵称
-    private String userImage;// 头像
+    private String userAvatar;// 头像
     private java.sql.Date createTime;// 创建日期
     private java.sql.Date updateTime;//最后一次更新日期
     private java.sql.Date lastLoginTime;// 最后一次登录日期

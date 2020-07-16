@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.UserDao;
 import com.domain.User;
+import com.model.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +13,23 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
+    public String Login (LoginUser loginUser) {
+        try {
+            User user = userDao.userLogin (loginUser.getAccount (), loginUser.getPassword ());
+            if (user == null) {
+                return "用户不存在";
+            }
+            return user.toString ();
+        } catch (Exception e) {
+            return "exception";
+        }
+    }
+
     public User getUserMessage (String userMessage) {
         if (Integer.getInteger (userMessage) != null) {
             return userDao.getUserById (Integer.getInteger (userMessage));
         } else {
-            return userDao.getUserByName (userMessage);
+            return userDao.getUserByAccount (userMessage);
         }
     }
 
@@ -24,7 +37,7 @@ public class UserService {
         return userDao.getUserList ();
     }
 
-    public boolean addUser (User user) {
-        return userDao.addUser (user);
+    public boolean registerUser (User user) {
+        return userDao.registerUser (user);
     }
 }

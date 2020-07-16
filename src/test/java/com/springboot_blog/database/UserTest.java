@@ -24,7 +24,7 @@ public class UserTest {
         user.setUserAccount ("zwbsdmpy");
         user.setPassword("123456");
         user.setUserName ("我是真的帅");
-        System.out.println (userDao.addUser(user));
+        System.out.println (userDao.registerUser (user));
     }
 
     @Test

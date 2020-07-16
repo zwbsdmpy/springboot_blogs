@@ -38,6 +38,7 @@ public class ConnectionTest {
         try {
             connection = dataSource.getConnection();
         } catch (SQLException e) {
+            System.out.println ("连接失败！！！！");
             e.printStackTrace();
         } finally {
             try {

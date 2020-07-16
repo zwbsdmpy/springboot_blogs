@@ -9,10 +9,17 @@
         where user_id = #{user}
     </select>
 
-    <select id="getUserByName" resultType="com.domain.User">
+    <select id="getUserByAccount" resultType="com.domain.User">
         select *
         from user
-        where user_name = #{userName}
+        where user_account = #{userAccount}
+    </select>
+
+    <select id="userLogin" resultType="com.domain.User">
+        select *
+        from user
+        where user_account = #{account}
+          AND password = #{password}
     </select>
 
     <select id="getUserList" resultType="com.domain.User">
@@ -20,10 +27,10 @@
         from user
     </select>
 
-    <insert id="addUser" parameterType="com.domain.User">
-        insert into user(user_id, user_account, password, user_email, user_name, user_image, create_time, update_time,
+    <insert id="registerUser" parameterType="com.domain.User">
+        insert into user(user_id, user_account, password, user_email, user_name, user_avatar, create_time, update_time,
                          last_login_time, status, birthday, telephone, role_id)
-        values (#{userId}, #{userAccount}, #{password}, #{userEmail}, #{userName}, #{userImage}, #{createTime},
+        values (#{userId}, #{userAccount}, #{password}, #{userEmail}, #{userName}, #{userAvatar}, #{createTime},
                 #{updateTime}, #{lastLoginTime}, #{status}, #{birthday}, #{telephone}, #{roleId});
     </insert>
 
@@ -31,7 +38,7 @@
         update user
         set password=#{password},
             user_name=#{userName},
-            user_image=#{userImage},
+            user_avatar=#{userAvatar},
             birthday=#{birthday},
             user_email=#{userEmail},
             telephone=#{telephone},

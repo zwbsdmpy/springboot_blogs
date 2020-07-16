@@ -7,16 +7,17 @@ import java.util.List;
 
 @Repository
 public interface UserDao {
-    public boolean addUser(User user);
+    public User userLogin (String account, String password);
 
-    public boolean updateUserByAccount(String user);
+    public boolean registerUser (User user);
 
-    public boolean deleteUserByAccount(String userAccount);
+    public boolean updateUserByAccount (String user);
 
-    public User getUserById(int userId);
+    public boolean deleteUserByAccount (String userAccount);
 
-    public User getUserByName(String userName);
+    public User getUserById (int userId);
 
-    public List<User> getUserList();
+    public User getUserByAccount (String userAccount);
 
+    public List<User> getUserList ();
 }

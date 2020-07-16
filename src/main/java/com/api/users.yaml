@@ -22,14 +22,14 @@ produces:
   - application/json
 #必要字段!定义可有可操作的API
 paths:
-  /blogs/menu/siderMenuList:
+  /blogs/users/login:
    #必要字段!定义HTTP操作方法，必须是http协议定义的方法
-    get:
+    post:
       #接口概要
-      summary: 获取左侧菜单栏列表
+      summary: 用户登录
       #接口描述
-      description: '获取左侧菜单栏列表'
-      #标签，方便快速过滤出User相关的接口
+      description: '判断是否存在该用户，并返回用户信息'
+      #标签，方便快速过滤出Users相关的接口
       tags:
         - blogs
       #返回值描述，必要自动
