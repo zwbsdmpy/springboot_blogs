@@ -5,6 +5,7 @@ import AppstoreOutlined from "@ant-design/icons/lib/icons/AppstoreOutlined";
 import SettingOutlined from "@ant-design/icons/lib/icons/SettingOutlined";
 import {Avatar} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
+import {Link} from "react-router-dom";
 
 const {SubMenu} = Menu;
 
@@ -58,7 +59,7 @@ export class CommonHeader extends Component {
                         </span>
                         </Col>
                         <Col span={6}>
-                            <h4><a href='/login'>登录</a>/注册</h4>
+                            <h4><Link to='/login'>登录</Link>/注册</h4>
                         </Col>
                     </Col>
                 </Row>

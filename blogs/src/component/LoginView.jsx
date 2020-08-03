@@ -1,9 +1,4 @@
 import React, {Component} from "react";
-//
-// import "../css/style.default.css";
-// import "../css/bootstrap.css"
-
-// import LoginForm from "./form/Form";
 
 export default class LoginView extends Component {
     render() {
@@ -17,7 +12,6 @@ export default class LoginView extends Component {
                                 <strong className="text-primary">BLOG</strong>
                             </div>
                             <p>人类的悲欢并不相通 我只觉得他们吵闹</p>
-                            {/*<LoginForm/>*/}
                             <a href="#" className="forgot-pass">忘记密码？</a>
                             < small> 没有账号？ </small><a href="register.html" className="signup">注册</a>
                         </div>

@@ -1,13 +1,11 @@
 package com.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.util.JsonUtil;
 import lombok.Data;
-import lombok.SneakyThrows;
+import lombok.ToString;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 @Data
 public class User {
@@ -29,5 +27,15 @@ public class User {
         this.createTime = new Date (System.currentTimeMillis ());
         this.updateTime = createTime;
         this.status = 0;
+    }
+
+    @Override
+    public String toString () {
+        try {
+            return JsonUtil.obj2String (this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace ();
+        }
+        return "";
     }
 }

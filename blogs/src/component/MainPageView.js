@@ -12,14 +12,18 @@ const {Content} = Layout;
 
 class MainPageView extends Component {
     componentDidMount() {
-        this.props.getSiderMenuData();
+        this.props.login({
+            "account": "zwbsdmpy",
+            "password": "zwbsdmpy"
+        });
     }
 
     render() {
-        const siderData = this.props.siderMenuList;
+        const userData = this.props.userData;
+        console.log(userData);
         return (
             <Layout style={{minHeight: '100vh'}}>
-                <CommonSider siderData={siderData}/>
+                <CommonSider />
                 <Layout className="site-layout">
                     <CommonHeader/>
                     <Content style={{margin: '0 16px'}}>
@@ -33,14 +37,14 @@ class MainPageView extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        siderMenuList: state.mainView.siderMenuList
+        userData: state.mainView.userData,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getSiderMenuData() {
-            dispatch(action.getSiderDataAction())
+        login(user) {
+            dispatch(action.login(user))
         }
     }
 }

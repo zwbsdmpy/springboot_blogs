@@ -1,34 +1,22 @@
 import * as actionType from './actionType.js'
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080"
-/**
- * 创建登录action
- * @param user
- * @returns {{data: object, type: string}}
- */
-export const login = (user) => {
-    return {
-        type: actionType.LOGIN,
-        data: user,
-    }
-}
-
-export const getSiderDataAction = () => {
+export const login = (data) => {
     return (dispatch) => {
-        axios.get(baseUrl + '/rest/blogs/siderMenuList').then(
+        axios.post('/users/login', data).then(
             (res) => {
                 if (res.status === 200) {
-                    const siderData = res.result;
+                    console.log("userdata:" + JSON.stringify(res));
+                    const userData = res.data;
                     dispatch({
-                        type: actionType.SIDER_MENU_LIST,
-                        siderData,
+                        type: actionType.USER_DATA,
+                        userData,
                     })
                 }
             }
         ).catch(
             () => {
-                alert("首页数据请求失败！")
+                alert("登录失败！")
             }
         )
     }

@@ -3,7 +3,7 @@ import {combineReducers} from "redux";
 import * as actions from "./actionCreater";
 
 const initState = {
-    user: {
+    userData: {
         "id": 10000,
         "userAccount": "zwbsdmpy",
         "password": "zwbsdmpy",
@@ -47,10 +47,9 @@ const mainView = (state = initState, action) => {
     switch (action.type) {
         case actionType.LOGIN:
             return state;
-        case actionType.SIDER_MENU_LIST:
-            const newState = JSON.parse(JSON.stringify(state));
-            newState.siderMenuList = state.siderMenuList;
-            return newState;
+        case actionType.USER_DATA:
+            state.userData = action.userData;
+            return state;
         default:
             return state;
     }
