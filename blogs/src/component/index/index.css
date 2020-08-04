@@ -1,0 +1,36 @@
+.page {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./sea.jpg");
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: absolute;
+}
+
+.layout {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+p {
+    display: table-cell;
+    vertical-align: middle;
+    height: 300px;
+}
+
+.footer {
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    top: 90%;
+    right: 40%;
+}
