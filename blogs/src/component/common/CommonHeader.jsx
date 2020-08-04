@@ -53,9 +53,7 @@ export class CommonHeader extends Component {
                     <Col span={6}>
                         <Col span={6}>
                         <span className="avatar-item">
-                         <Badge count={1}>
                          <Avatar shape="square" size='large' icon={<UserOutlined/>}/>
-                         </Badge>
                         </span>
                         </Col>
                         <Col span={6}>
