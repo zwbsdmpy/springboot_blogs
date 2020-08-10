@@ -9,19 +9,30 @@ import java.sql.Date;
 
 @Data
 public class User {
-    private long userId;// 用户ID
-    private String userAccount;// 账号
+    // 用户ID
+    private int userId;
+    // 账号
+    private String userAccount;
     private String password;
     private String userEmail;
-    private String userName;// 用户昵称
-    private String userAvatar;// 头像
-    private java.sql.Date createTime;// 创建日期
-    private java.sql.Date updateTime;//最后一次更新日期
-    private java.sql.Date lastLoginTime;// 最后一次登录日期
-    private long status;// 状态
-    private java.sql.Date birthday;// 生日
-    private String telephone;// 电话
-    private long roleId;// 身份
+    // 用户昵称
+    private String userName;
+    // 头像
+    private String userAvatar;
+    // 创建日期
+    private java.sql.Date createTime;
+    // 最后一次更新日期
+    private java.sql.Date updateTime;
+    // 最后一次登录日期
+    private java.sql.Date lastLoginTime;
+    // 状态
+    private long status;
+    // 生日
+    private java.sql.Date birthday;
+    // 电话
+    private String telephone;
+    // 身份
+    private long roleId;
 
     public User () {
         this.createTime = new Date (System.currentTimeMillis ());
@@ -31,11 +42,6 @@ public class User {
 
     @Override
     public String toString () {
-        try {
             return JsonUtil.obj2String (this);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace ();
-        }
-        return "";
     }
 }

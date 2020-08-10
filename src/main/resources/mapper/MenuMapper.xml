@@ -4,30 +4,30 @@
 <!--映射接口所在包路径-->
 <mapper namespace="com.dao.MenuDao">
     <insert id="addMenu" parameterType="com.domain.Menu">
-        insert into menu(menu_id, menu_type, menu_data)
-        values (#{menuId}, #{menuType}, #{menuData});
+        insert into menu(menu_id, user_id, menu_type, menu_data)
+        values (#{menuId}, #{userId}, #{menuType}, #{menuData});
     </insert>
     <select id="getMenus" resultType="com.domain.Menu">
         select *
         from menu;
     </select>
 
-    <!--TODO:外键绑定user-->
     <select id="getMenuByOwner" resultType="com.domain.Menu">
         select *
         from menu
+        where user_id = #{userId}
     </select>
 
     <delete id="deleteMenuById">
         delete
         from menu
-        where menu_id = #{id};
+        where menu_id = #{menuId};
     </delete>
 
     <update id="upDateMenuById">
         update menu
         set menu_type=#{menuType},
             menu_data=#{menuData}
-        where menu_id = #{menu_id}
+        where menu_id = #{menuId}
     </update>
 </mapper>

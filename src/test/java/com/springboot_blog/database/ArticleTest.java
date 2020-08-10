@@ -1,8 +1,6 @@
 package com.springboot_blog.database;
 
 import com.dao.ArticleDao;
-import com.domain.Article;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;

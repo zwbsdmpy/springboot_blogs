@@ -4,9 +4,10 @@
 <!--映射接口所在包路径-->
 <mapper namespace="com.dao.ArticleDao">
     <insert id="addArticle" parameterType="com.domain.Article">
-        insert into article(article_id, owner, ariticle_title, content, likes_num, scan_num, reply_id)
-        values (#{articleId}, #{owner}, #{ariticleTitle}, #{content}, #{likesNum}, #{scanNum}, #{replyId});
+        insert into article(article_id, user_id, ariticle_title, content, scan_count, likes_count, reply_count)
+        values (#{articleId}, #{userId}, #{ariticleTitle}, #{content} #{scanCount}, #{likesCount}, #{replyCount});
     </insert>
+
     <select id="getArticles" resultType="com.domain.Article">
         select *
         from article;
@@ -15,13 +16,13 @@
     <select id="getArticlesByOwner" resultType="com.domain.Article">
         select *
         from article
-        where owner = #{owner};
+        where user_id = #{userId};
     </select>
 
     <select id="queryArticles" resultType="com.domain.Article">
         select *
         from article
-        where ariticle_title like #{title}
+        where like #{title}
            or owner like #{owner};
     </select>
 

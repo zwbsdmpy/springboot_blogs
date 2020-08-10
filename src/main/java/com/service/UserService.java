@@ -1,8 +1,10 @@
 package com.service;
 
 import com.dao.UserDao;
+import com.domain.Menu;
 import com.domain.User;
 import com.model.LoginUser;
+import com.model.UserResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,18 +13,25 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    private UserDao userDao;
+    private MenuService menuService;
 
-    public String Login (LoginUser loginUser) {
-        try {
-            User user = userDao.userLogin (loginUser.getAccount (), loginUser.getPassword ());
-            if (user == null) {
-                return "用户不存在";
-            }
-            return user.toString ();
-        } catch (Exception e) {
-            return "exception";
+    private final UserDao userDao;
+
+    public UserService (UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public String login (LoginUser loginUser) {
+        User user = userDao.userLogin (loginUser.getAccount (), loginUser.getPassword ());
+        if (user == null) {
+            return "用户不存在";
         }
+        List<Menu> menuList = menuService.getUserMenu (user.getUserId ());
+        UserResource rspContent = new UserResource ();
+
+        rspContent.setUser (user);
+        rspContent.setMenus (menuList);
+        return user.toString ();
     }
 
     public User getUserMessage (String userMessage) {

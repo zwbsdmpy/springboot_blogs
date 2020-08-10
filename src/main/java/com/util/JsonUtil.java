@@ -12,7 +12,7 @@ public class JsonUtil {
     private JsonUtil () {
     }
 
-    public static String obj2String (Object object) throws JsonProcessingException {
+    public static String obj2String (Object object) {
         if (object == null) {
             return null;
         }
@@ -20,6 +20,11 @@ public class JsonUtil {
             return object.toString ();
         }
         ObjectMapper mapper = new ObjectMapper ();
-        return mapper.writeValueAsString (object);
+        try {
+            return mapper.writeValueAsString (object);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace ();
+        }
+        return "";
     }
 }
