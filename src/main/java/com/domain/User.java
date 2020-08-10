@@ -42,6 +42,6 @@ public class User {
 
     @Override
     public String toString () {
-            return JsonUtil.obj2String (this);
+        return JsonUtil.obj2String (this);
     }
 }

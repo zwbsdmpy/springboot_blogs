@@ -4,7 +4,7 @@
 <mapper namespace="com.dao.ArticleDao">
     <insert id="addArticle" parameterType="com.domain.Article">
         insert into article(article_id, user_id, article_title, content, scan_count, likes_count, reply_count)
-        values (#{articleId}, #{userId}, #{ariticleTitle}, #{content} #{scanCount}, #{likesCount}, #{replyCount});
+        values (#{articleId}, #{userId}, #{ariticleTitle}, #{content}, #{scanCount}, #{likesCount}, #{replyCount});
     </insert>
 
     <select id="getArticles" resultType="com.domain.Article">
@@ -18,8 +18,8 @@
         where user_id = #{userId};
     </select>
 
-    <select id="getArticleIndexsByOwner" resultType="java.util.ArrayList">
-        select article_id,article_title,user_id,scan_count,likes_count,reply_count
+    <select id="getArticleIndexsByOwner" resultType="com.domain.Article">
+        select article_id, article_title, user_id, content, scan_count, likes_count, reply_count
         from article
         where user_id = #{userId};
     </select>
