@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <!--映射接口所在包路径-->
 <mapper namespace="com.dao.ArticleDao">
     <insert id="addArticle" parameterType="com.domain.Article">
-        insert into article(article_id, user_id, ariticle_title, content, scan_count, likes_count, reply_count)
+        insert into article(article_id, user_id, article_title, content, scan_count, likes_count, reply_count)
         values (#{articleId}, #{userId}, #{ariticleTitle}, #{content} #{scanCount}, #{likesCount}, #{replyCount});
     </insert>
 
@@ -19,11 +18,17 @@
         where user_id = #{userId};
     </select>
 
+    <select id="getArticleIndexsByOwner" resultType="java.util.ArrayList">
+        select article_id,article_title,user_id,scan_count,likes_count,reply_count
+        from article
+        where user_id = #{userId};
+    </select>
+
     <select id="queryArticles" resultType="com.domain.Article">
         select *
         from article
-        where like #{title}
-           or owner like #{owner};
+        where article_title like #{title}
+           or user_id like #{owner};
     </select>
 
     <delete id="deleteArticleById">
@@ -34,11 +39,15 @@
 
     <update id="upDateArticleById">
         update article
-        set ariticle_title=#{ariticleTitle},
+        set article_title=#{articleTitle},
             content=#{content},
-            likes_num=#{likesNum},
-            scan_num=#{scanNum},
+            likes_count=#{likesCount},
+            =#{scanNum},
             reply_id=#{replyId}
         where article_id = #{articleId}
     </update>
+
+    <resultMap id="articleIndexs" type="com.domain.Article">
+        <result property="article" column="com.domain.Article"/>
+    </resultMap>
 </mapper>

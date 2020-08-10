@@ -1,6 +1,7 @@
 package com.service;
 
 import com.dao.UserDao;
+import com.domain.Article;
 import com.domain.Menu;
 import com.domain.User;
 import com.model.LoginUser;
@@ -15,6 +16,10 @@ public class UserService {
     @Autowired
     private MenuService menuService;
 
+
+    @Autowired
+    private ArticleService articleService;
+
     private final UserDao userDao;
 
     public UserService (UserDao userDao) {
@@ -27,11 +32,12 @@ public class UserService {
             return "用户不存在";
         }
         List<Menu> menuList = menuService.getUserMenu (user.getUserId ());
+        List<Article> articles = articleService.getList (user.getUserId ());
         UserResource rspContent = new UserResource ();
-
         rspContent.setUser (user);
         rspContent.setMenus (menuList);
-        return user.toString ();
+        rspContent.setArticles (articles);
+        return rspContent.toString ();
     }
 
     public User getUserMessage (String userMessage) {

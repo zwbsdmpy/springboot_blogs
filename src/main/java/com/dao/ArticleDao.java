@@ -16,6 +16,8 @@ public interface ArticleDao {
 
     public List<Article> getArticlesByOwner (int owner);
 
+    public List<Article> getArticleIndexsByOwner (int owner);
+
     public List<Article> queryArticles (String title, int owner);
 
     public boolean deleteArticleById (int id);

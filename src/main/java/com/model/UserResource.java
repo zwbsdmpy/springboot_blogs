@@ -1,5 +1,6 @@
 package com.model;
 
+import com.domain.Article;
 import com.domain.Menu;
 import com.domain.User;
 import lombok.Data;
@@ -13,4 +14,6 @@ public class UserResource {
     private User user;
 
     private List<Menu> menus;
+
+    private List<Article> articles;
 }
