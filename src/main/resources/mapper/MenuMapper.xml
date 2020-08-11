@@ -3,6 +3,13 @@
 
 <!--映射接口所在包路径-->
 <mapper namespace="com.dao.MenuDao">
+    <resultMap id="menu" type="com.domain.Menu">
+        <id column="menu_id" property="menuId"/>
+        <result column="user_id" property="userId"/>
+        <result column="menu_type" property="menuType"/>
+        <result column="menu_data" property="menuData"/>
+    </resultMap>
+
     <insert id="addMenu" parameterType="com.domain.Menu">
         insert into menu(menu_id, user_id, menu_type, menu_data)
         values (#{menuId}, #{userId}, #{menuType}, #{menuData});
