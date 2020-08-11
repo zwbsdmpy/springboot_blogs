@@ -3,21 +3,7 @@ import {combineReducers} from "redux";
 import * as actions from "./actionCreater";
 
 const initState = {
-    userData: {
-        "id": 10000,
-        "userAccount": "zwbsdmpy",
-        "password": "zwbsdmpy",
-        "email": "",
-        "userName": "",
-        "userAvatar": "",
-        "createTime": "",
-        "updateTime": "",
-        "lastLoginTime": "",
-        "status": 0,
-        "birthday": "",
-        "telephone": "",
-        "roleId": 0
-    },
+    userData: {},
     siderMenuList: [
         {'所有博客': {}},
         {

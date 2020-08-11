@@ -5,17 +5,11 @@ import {Layout} from 'antd';
 import {CommonFooter} from "./common/CommonFooter.jsx";
 import {CommonHeader} from "./common/CommonHeader.jsx";
 import {CommonSider} from "./common/CommonSider.jsx";
-import {connect} from 'react-redux'
-import * as action from "../redux/actionCreater";
 
 const {Content} = Layout;
 
-class Home extends Component {
+export default class ManagerView extends Component {
     componentDidMount() {
-        this.props.login({
-            "account": "zwbsdmpy",
-            "password": "zwbsdmpy"
-        });
     }
 
     render() {
@@ -23,7 +17,7 @@ class Home extends Component {
         console.log(userData);
         return (
             <Layout style={{minHeight: '100vh'}}>
-                <CommonSider />
+                <CommonSider/>
                 <Layout className="site-layout">
                     <CommonHeader/>
                     <Content style={{margin: '0 16px'}}>
@@ -34,19 +28,3 @@ class Home extends Component {
         );
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-        userData: state.mainView.userData,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        login(user) {
-            dispatch(action.login(user))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
