@@ -11,7 +11,7 @@
 
     <groupId>com</groupId>
     <artifactId>springboot_blog</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>springboot_blog</name>
     <description>Demo project for blogs from Spring Boot</description>
 
@@ -20,7 +20,6 @@
     </properties>
 
     <dependencies>
-
         <!--Springboot基础配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

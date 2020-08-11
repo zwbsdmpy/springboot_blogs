@@ -3,7 +3,7 @@
 
 <!--映射接口所在包路径-->
 <mapper namespace="com.dao.UserDao">
-    <resultMap id="user" type="com.domain.User">
+    <resultMap id="User" type="com.domain.User">
         <id column="user_id" property="userId"/>
         <result column="user_account" property="userAccount"/>
         <result column="password" property="password"/>
@@ -18,26 +18,26 @@
         <result column="role_id" property="roleId"/>
     </resultMap>
 
-    <select id="getUserById" resultMap="user">
+    <select id="getUserById" resultMap="User">
         select *
         from user
         where user_id = #{user}
     </select>
 
-    <select id="getUserByAccount" resultMap="user">
+    <select id="getUserByAccount" resultMap="User">
         select *
         from user
         where user_account = #{userAccount}
     </select>
 
-    <select id="userLogin" resultMap="user">
+    <select id="userLogin" resultMap="User">
         select *
         from user
         where user_account = #{account}
           AND password = #{password}
     </select>
 
-    <select id="getUserList" resultMap="user">
+    <select id="getUserList" resultMap="User">
         select *
         from user
     </select>

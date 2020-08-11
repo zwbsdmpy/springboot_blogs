@@ -3,17 +3,27 @@ package com.model;
 import com.domain.Article;
 import com.domain.Menu;
 import com.domain.User;
+import com.util.JsonUtil;
 import lombok.Data;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * 用户资源
+ *
+ * @author zwbsdmpy
+ */
 @Data
 public class UserResource {
     private User user;
 
-    private List<Menu> menus;
+    private List<Menu> menus = new ArrayList<> ();
 
-    private List<Article> articles;
+    private List<Article> articles = new ArrayList<> ();
+
+    @Override
+    public String toString () {
+        return JsonUtil.obj2String (this);
+    }
 }
