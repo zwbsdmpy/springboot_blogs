@@ -18,7 +18,7 @@ import java.util.List;
 public class UserResource {
     private User user;
 
-    private List<Menu> menus = new ArrayList<> ();
+    private Menu menu = new Menu ();
 
     private List<Article> articles = new ArrayList<> ();
 

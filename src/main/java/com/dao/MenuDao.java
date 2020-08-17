@@ -31,7 +31,7 @@ public interface MenuDao {
      * @param userId 用户ID
      * @return menuList
      */
-    public List<Menu> getMenuByOwner (int userId);
+    public Menu getMenuByOwner (int userId);
 
     /**
      * 删除单个菜单项

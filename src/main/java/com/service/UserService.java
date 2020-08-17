@@ -31,11 +31,11 @@ public class UserService {
         if (user == null) {
             return "用户不存在";
         }
-        List<Menu> menuList = menuService.getUserMenu (user.getUserId ());
+        Menu menu = menuService.getUserMenu (user.getUserId ());
         List<Article> articles = articleService.getList (user.getUserId ());
         UserResource rspContent = new UserResource ();
         rspContent.setUser (user);
-        rspContent.setMenus (menuList);
+        rspContent.setMenus (menu);
         rspContent.setArticles (articles);
         return rspContent.toString ();
     }

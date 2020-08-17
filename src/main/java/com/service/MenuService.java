@@ -14,7 +14,7 @@ public class MenuService {
         this.menuDao = menuDao;
     }
 
-    public List<Menu> getUserMenu (int userId) {
+    public Menu getUserMenu (int userId) {
         return menuDao.getMenuByOwner (userId);
     }
 }
