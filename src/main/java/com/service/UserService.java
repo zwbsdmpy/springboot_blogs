@@ -35,7 +35,7 @@ public class UserService {
         List<Article> articles = articleService.getList (user.getUserId ());
         UserResource rspContent = new UserResource ();
         rspContent.setUser (user);
-        rspContent.setMenus (menu);
+        rspContent.setMenu (menu);
         rspContent.setArticles (articles);
         return rspContent.toString ();
     }
